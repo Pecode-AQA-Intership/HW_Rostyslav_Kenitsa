@@ -5,7 +5,7 @@ class LoginPage {
     }
 
     userEmailField() {
-        return  cy.get('#userEmail')
+        return cy.get('#userEmail')
     }
 
     currentAddress(index) {

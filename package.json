@@ -3,6 +3,6 @@
     "cypress": "^9.4.1"
   },
   "dependencies": {
-    "faker": "^6.6.6"
+    "faker": "^5.5.3"
   }
 }
