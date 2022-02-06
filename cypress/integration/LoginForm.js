@@ -5,18 +5,18 @@ import {
     checkPermanentAddressInResult,
     fillInTheRegistrationFormAndClickTheSendButton
 } from "../models/loginPage";
-import {NAME} from "../testData/testData";
+import {BASE_URL, FAKE_DATA} from "../testData/testData";
 
-describe("Log in", () => {
+describe("Verify that the login form works correctly", () => {
     beforeEach(() => {
-        cy.visit('https://demoqa.com/text-box');
+        cy.visit(BASE_URL);
     })
 
-    it("Checks the username field present on the page", () => {
+    it("Check that the entered data is correctly displayed in the result field", () => {
         fillInTheRegistrationFormAndClickTheSendButton();
-        checkNameInResult(NAME);
-        checkEmailInResult('john@gmail.com');
-        checkCurrentAddressInResult('johnjjfjgjj');
-        checkPermanentAddressInResult('john53535');
+        checkNameInResult(FAKE_DATA.name);
+        checkEmailInResult(FAKE_DATA.email);
+        checkCurrentAddressInResult(FAKE_DATA.currentAddress);
+        checkPermanentAddressInResult(FAKE_DATA.permanentAddress);
     });
 })
