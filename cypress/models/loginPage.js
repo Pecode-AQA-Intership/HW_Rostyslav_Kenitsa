@@ -11,12 +11,12 @@ export function fillInTheRegistrationFormAndClickTheSendButton() {
     loginPage.submitBtn().should("be.visible").click();
 }
 
-export function checkNameInResult(expectedName) {
-    loginPage.resultName().contains(expectedName);
-}
-
 export function checkEmailInResult(expectedEmail) {
     loginPage.resultEmail().contains(expectedEmail);
+}
+
+export function checkNameInResult(expectedName) {
+    loginPage.resultName().contains(expectedName);
 }
 
 export function checkCurrentAddressInResult(currentAddress) {
