@@ -16,10 +16,6 @@ class LoginPage {
         return cy.get('#permanentAddress').eq(index);
     }
 
-    submitBtn() {
-        return cy.get('#submit')
-    }
-
     resultName() {
         return cy.get('#name')
     }
