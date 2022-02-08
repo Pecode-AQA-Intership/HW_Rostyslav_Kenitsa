@@ -17,7 +17,7 @@ describe("Verify that users analytics work correct", () => {
     beforeEach(() => {
         cy.visit(BASE_URL + ADD_USER_PAGE_ENDPOINT);
     })
-    
+
     it("Check that user can be added, edit, searched, sorted and deleted from analytics", () => {
         clickAddNewUserBtn();
         addNewUser();
