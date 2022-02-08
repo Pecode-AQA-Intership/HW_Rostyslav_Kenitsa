@@ -26,8 +26,39 @@ export function checkThatNewUserDataShouldBeDisplayedInDashboard(USERS_DATA) {
 }
 
 export function editUserFromAnalytics() {
-        userPage.tableOfUsers().contains(FAKE_DATA.name).parent().find('[id*="edit-record"]').click();
+    userPage.tableOfUsers().contains(FAKE_DATA.name).parent().find('[id*="edit-record"]').click();
 }
+
+export function findUserInAnalytics(USERS_DATA) {
+    for (let userData of USERS_DATA) {
+        userPage.searchForm().clear().type(userData);
+        userPage.searchBtn().click();
+        userPage.tableOfUsers().contains(userData).should('be.exist');
+    }
+    userPage.searchForm().clear();
+}
+
+
+export function getCellTextAsArray() {
+        let cellContents = [];
+        return new Cypress.Promise(resolve => {
+            cy.get('[class="rt-tr -odd"]').eq(0)
+                .children()
+                .each(($el, $index) => {
+                    cellContents.push($el.text());
+                })
+                .then(() => resolve(cellContents));
+        });
+}
+
+export function sort() {
+    getCellTextAsArray().then(cellContents => {
+        let actual = cellContents.slice();
+        cy.wrap(actual).should("deep.eq", cellContents.sort());
+    });
+}
+
+
 
 export function editUser(endpointName, endpointNumbers) {
     userPage.userFirstNameField().type(endpointName);

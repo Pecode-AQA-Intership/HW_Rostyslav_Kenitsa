@@ -6,20 +6,27 @@ import {
     clickAddNewUserBtn,
     editUser,
     deleteUserFromAnalytics,
-    checkThatDeletedUserNotExistInAnalytics
+    checkThatDeletedUserNotExistInAnalytics,
+    findUserInAnalytics,
+    sort
 } from "../models/userPage";
 
-describe("", () => {
+
+describe("Verify that users analytics work correct", () => {
+
     beforeEach(() => {
         cy.visit(BASE_URL + ADD_USER_PAGE_ENDPOINT);
     })
-    it("", () => {
+    
+    it("Check that user can be added, edit, searched, sorted and deleted from analytics", () => {
         clickAddNewUserBtn();
         addNewUser();
         checkThatNewUserDataShouldBeDisplayedInDashboard(USERS_DATA);
         editUserFromAnalytics();
         editUser(EDIT_TEST, EDIT_TEST_NUMBERS);
+        findUserInAnalytics(USERS_DATA);
         deleteUserFromAnalytics();
         checkThatDeletedUserNotExistInAnalytics();
+        sort();
     });
 })

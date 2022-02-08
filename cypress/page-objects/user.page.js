@@ -31,6 +31,14 @@ class UserPage {
     tableOfUsers() {
         return cy.get('.rt-tbody').find('[role=row]');
     }
+
+    searchForm() {
+        return cy.get('#searchBox');
+    }
+
+    searchBtn() {
+        return cy.get('#basic-addon2');
+    }
 }
 
 export default UserPage;
