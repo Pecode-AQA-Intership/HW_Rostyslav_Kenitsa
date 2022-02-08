@@ -1,6 +1,8 @@
 import LoginPage from '../page-objects/login.page';
+import UniversalPages from '../page-objects/universal.pages';
 import {FAKE_DATA} from "../testData/testData";
 
+const universalPages = new UniversalPages();
 const loginPage = new LoginPage();
 
 export function fillInTheRegistrationFormAndClickTheSendButton() {
@@ -8,7 +10,7 @@ export function fillInTheRegistrationFormAndClickTheSendButton() {
     loginPage.userEmailField().type(FAKE_DATA.email).should("be.visible");
     loginPage.currentAddress(0).type(FAKE_DATA.currentAddress).should("be.visible");
     loginPage.permanentAddress(0).type(FAKE_DATA.permanentAddress).should("be.visible");
-    loginPage.submitBtn().should("be.visible").click();
+    universalPages.submitBtn().should("be.visible").click();
 }
 
 export function checkEmailInResult(expectedEmail) {
