@@ -1,8 +1,11 @@
 import UserPage from '../page-objects/user.page';
+
 import UniversalPages from '../page-objects/universal.pages';
+
 import {FAKE_DATA} from "../testData/testData";
 
 const universalPages = new UniversalPages();
+
 const userPage = new UserPage();
 
 export function clickAddNewUserBtn() {
@@ -38,27 +41,43 @@ export function findUserInAnalytics(USERS_DATA) {
     userPage.searchForm().clear();
 }
 
-
-export function getCellTextAsArray() {
-        let cellContents = [];
-        return new Cypress.Promise(resolve => {
-            cy.get('[class="rt-tr -odd"]').eq(0)
-                .children()
-                .each(($el, $index) => {
-                    cellContents.push($el.text());
-                })
-                .then(() => resolve(cellContents));
-        });
-}
-
-export function sort() {
-    getCellTextAsArray().then(cellContents => {
-        let actual = cellContents.slice();
-        cy.wrap(actual).should("deep.eq", cellContents.sort());
+export function getCellTextAsArray(n) {
+    userPage.sortByName().eq(n).click();
+    let cellContents = [];
+    return new Cypress.Promise(resolve => {
+        cy.get(`.rt-td:nth-child(${n + 1})`)
+            .each(($el) => {
+                cellContents.push($el.text());
+            })
+            .then(() => resolve(cellContents));
     });
 }
 
-
+export function checkThatSortingWorkCorrect() {
+    for (let n = 0; n < 6; n++) {
+        switch (n) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 5:
+                getCellTextAsArray(n).then(cellContents => {
+                    let actual = cellContents.slice();
+                    cy.wrap(actual).should("deep.eq", cellContents.sort());
+                });
+                break;
+            case 4:
+                getCellTextAsArray(n).then(cellContents => {
+                    let actual = cellContents.slice();
+                    cy.wrap(actual).should("deep.eq", actual.sort(function (a, b) {
+                        return a - b
+                    }));
+                });
+                break;
+            default:
+        }
+    }
+}
 
 export function editUser(endpointName, endpointNumbers) {
     userPage.userFirstNameField().type(endpointName);

@@ -1,4 +1,11 @@
-import {ADD_USER_PAGE_ENDPOINT, BASE_URL, EDIT_TEST, USERS_DATA, EDIT_TEST_NUMBERS} from "../testData/testData";
+import {
+    ADD_USER_PAGE_ENDPOINT,
+    BASE_URL,
+    EDIT_TEST,
+    USERS_DATA,
+    EDIT_TEST_NUMBERS
+} from "../testData/testData";
+
 import {
     addNewUser,
     checkThatNewUserDataShouldBeDisplayedInDashboard,
@@ -8,9 +15,8 @@ import {
     deleteUserFromAnalytics,
     checkThatDeletedUserNotExistInAnalytics,
     findUserInAnalytics,
-    sort
+    checkThatSortingWorkCorrect
 } from "../models/userPage";
-
 
 describe("Verify that users analytics work correct", () => {
 
@@ -27,6 +33,6 @@ describe("Verify that users analytics work correct", () => {
         findUserInAnalytics(USERS_DATA);
         deleteUserFromAnalytics();
         checkThatDeletedUserNotExistInAnalytics();
-        sort();
+        checkThatSortingWorkCorrect();
     });
 })

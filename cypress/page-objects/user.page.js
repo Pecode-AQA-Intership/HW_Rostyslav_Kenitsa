@@ -39,6 +39,10 @@ class UserPage {
     searchBtn() {
         return cy.get('#basic-addon2');
     }
+
+    sortByName() {
+        return cy.get('.rt-resizable-header-content');
+    }
 }
 
 export default UserPage;
