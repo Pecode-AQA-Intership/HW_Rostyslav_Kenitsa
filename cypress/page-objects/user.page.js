@@ -4,18 +4,6 @@ class UserPage {
         return cy.get('#addNewRecordButton').contains('Add');
     }
 
-    userFirstNameField() {
-        return cy.get('#firstName');
-    }
-
-    userLastNameField() {
-        return cy.get('#lastName');
-    }
-
-    emailField() {
-        return cy.get('#userEmail');
-    }
-
     userAge() {
         return cy.get('#age');
     }

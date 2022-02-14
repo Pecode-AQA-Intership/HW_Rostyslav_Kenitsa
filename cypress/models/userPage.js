@@ -13,9 +13,9 @@ export function clickAddNewUserBtn() {
 }
 
 export function addNewUser() {
-    userPage.userFirstNameField().type(FAKE_DATA.name);
-    userPage.userLastNameField().type(FAKE_DATA.lastName);
-    userPage.emailField().type(FAKE_DATA.email);
+    universalPages.userFirstNameField().type(FAKE_DATA.name);
+    universalPages.userLastNameField().type(FAKE_DATA.lastName);
+    universalPages.emailField().type(FAKE_DATA.email);
     userPage.userAge().type(FAKE_DATA.age);
     userPage.userSalary().type(FAKE_DATA.salary);
     userPage.userDepartment().type(FAKE_DATA.department);
@@ -80,9 +80,9 @@ export function checkThatSortingWorkCorrect() {
 }
 
 export function editUser(endpointName, endpointNumbers) {
-    userPage.userFirstNameField().type(endpointName);
-    userPage.userLastNameField().type(endpointName);
-    userPage.emailField().clear().type(FAKE_DATA.email);
+    universalPages.userFirstNameField().type(endpointName);
+    universalPages.userLastNameField().type(endpointName);
+    universalPages.emailField().clear().type(FAKE_DATA.email);
     userPage.userAge().type(endpointNumbers);
     userPage.userSalary().type(endpointNumbers);
     userPage.userDepartment().type(endpointName);
