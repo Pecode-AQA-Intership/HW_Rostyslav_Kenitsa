@@ -8,8 +8,8 @@ const universalPages = new UniversalPages();
 
 const userPage = new UserPage();
 
-export function clickAddNewUserBtn() {
-    userPage.addUserBtn().click();
+export function clickAddNewUserButton() {
+    userPage.addUserButton().click();
 }
 
 export function addNewUser() {
@@ -19,10 +19,10 @@ export function addNewUser() {
     userPage.userAge().type(FAKE_DATA.age);
     userPage.userSalary().type(FAKE_DATA.salary);
     userPage.userDepartment().type(FAKE_DATA.department);
-    universalPages.submitBtn().click();
+    universalPages.submitButton().click();
 }
 
-export function checkThatNewUserDataShouldBeDisplayedInDashboard(USERS_DATA) {
+export function verifyThatNewUserDataShouldBeDisplayedInDashboard(USERS_DATA) {
     for (let userData of USERS_DATA) {
         userPage.tableOfUsers().contains(FAKE_DATA.name).parent().contains(userData);
     }
@@ -35,7 +35,7 @@ export function editUserFromAnalytics() {
 export function findUserInAnalytics(USERS_DATA) {
     for (let userData of USERS_DATA) {
         userPage.searchForm().clear().type(userData);
-        userPage.searchBtn().click();
+        userPage.searchButton().click();
         userPage.tableOfUsers().contains(userData).should('be.exist');
     }
     userPage.searchForm().clear();
@@ -53,7 +53,7 @@ export function getCellTextAsArray(n) {
     });
 }
 
-export function checkThatSortingWorkCorrect() {
+export function verifyThatSortingWorkCorrect() {
     for (let n = 0; n < 6; n++) {
         switch (n) {
             case 0:
@@ -86,13 +86,13 @@ export function editUser(endpointName, endpointNumbers) {
     userPage.userAge().type(endpointNumbers);
     userPage.userSalary().type(endpointNumbers);
     userPage.userDepartment().type(endpointName);
-    universalPages.submitBtn().click();
+    universalPages.submitButton().click();
 }
 
 export function deleteUserFromAnalytics() {
     userPage.tableOfUsers().contains(FAKE_DATA.name).parent().find('[id*="delete-record"]').click();
 }
 
-export function checkThatDeletedUserNotExistInAnalytics() {
-    userPage.tableOfUsers().contains(FAKE_DATA.name).should('not.exist');
+export function verifyThatDeletedUserNotExistInAnalytics() {
+    userPage.tableOfUsers().contains(FAKE_DATA.email).should('not.exist');
 }

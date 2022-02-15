@@ -1,6 +1,6 @@
 class UserPage {
 
-    addUserBtn() {
+    addUserButton() {
         return cy.get('#addNewRecordButton').contains('Add');
     }
 
@@ -36,7 +36,7 @@ class UserPage {
         return cy.get('#searchBox');
     }
 
-    searchBtn() {
+    searchButton() {
         return cy.get('#basic-addon2');
     }
 

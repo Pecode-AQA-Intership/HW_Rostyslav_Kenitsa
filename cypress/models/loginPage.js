@@ -10,21 +10,21 @@ export function fillInTheRegistrationFormAndClickTheSendButton() {
     loginPage.userEmailField().type(FAKE_DATA.email).should("be.visible");
     loginPage.currentAddress(0).type(FAKE_DATA.currentAddress).should("be.visible");
     loginPage.permanentAddress(0).type(FAKE_DATA.permanentAddress).should("be.visible");
-    universalPages.submitBtn().should("be.visible").click();
+    universalPages.submitButton().should("be.visible").click();
 }
 
-export function checkEmailInResult(expectedEmail) {
-    loginPage.resultEmail().contains(expectedEmail);
+export function verifyEmailInResult(expectedEmail) {
+    loginPage.resultEmail().should('contain', expectedEmail);
 }
 
-export function checkNameInResult(expectedName) {
-    loginPage.resultName().contains(expectedName);
+export function verifyNameInResult(expectedName) {
+    loginPage.resultName().should('contain', expectedName);
 }
 
-export function checkCurrentAddressInResult(currentAddress) {
-    loginPage.resultCurrentAddress().contains(currentAddress);
+export function verifyCurrentAddressInResult(currentAddress) {
+    loginPage.resultCurrentAddress().should('contain', currentAddress);
 }
 
-export function checkPermanentAddressInResult(permanentAddress) {
-    loginPage.resultPermanentAddress().contains(permanentAddress);
+export function verifyPermanentAddressInResult(permanentAddress) {
+    loginPage.resultPermanentAddress().should('contain', permanentAddress);
 }

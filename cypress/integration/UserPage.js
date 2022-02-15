@@ -8,31 +8,48 @@ import {
 
 import {
     addNewUser,
-    checkThatNewUserDataShouldBeDisplayedInDashboard,
+    verifyThatNewUserDataShouldBeDisplayedInDashboard,
     editUserFromAnalytics,
-    clickAddNewUserBtn,
+    clickAddNewUserButton,
     editUser,
     deleteUserFromAnalytics,
-    checkThatDeletedUserNotExistInAnalytics,
+    verifyThatDeletedUserNotExistInAnalytics,
     findUserInAnalytics,
-    checkThatSortingWorkCorrect
+    verifyThatSortingWorkCorrect
 } from "../models/userPage";
 
 describe("Verify that users analytics work correct", () => {
 
     beforeEach(() => {
-        cy.visit(BASE_URL + ADD_USER_PAGE_ENDPOINT);
+        cy.visit('/' + ADD_USER_PAGE_ENDPOINT);
     })
 
-    it("Check that user can be added, edit, searched, sorted and deleted from analytics", () => {
-        clickAddNewUserBtn();
+    it("Check that user will be added from analytics", () => {
+        clickAddNewUserButton();
         addNewUser();
-        checkThatNewUserDataShouldBeDisplayedInDashboard(USERS_DATA);
+        verifyThatNewUserDataShouldBeDisplayedInDashboard(USERS_DATA);
+    });
+
+    it("Check that user can be edit from analytics", () => {
+        clickAddNewUserButton();
+        addNewUser();
         editUserFromAnalytics();
-        editUser(EDIT_TEST, EDIT_TEST_NUMBERS);
+    });
+
+    it("Check that user can be searched from analytics", () => {
+        clickAddNewUserButton();
+        addNewUser();
         findUserInAnalytics(USERS_DATA);
+    });
+
+    it("Check that user can be deleted from analytics", () => {
+        clickAddNewUserButton();
+        addNewUser();
         deleteUserFromAnalytics();
-        checkThatDeletedUserNotExistInAnalytics();
-        checkThatSortingWorkCorrect();
+        verifyThatDeletedUserNotExistInAnalytics();
+    });
+
+    it("Check that user can be searched from analytics", () => {
+        verifyThatSortingWorkCorrect();
     });
 })

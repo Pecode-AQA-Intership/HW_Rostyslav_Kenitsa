@@ -1,6 +1,6 @@
 class UniversalPages {
 
-    submitBtn() {
+    submitButton() {
         return cy.get('#submit')
     }
 }
